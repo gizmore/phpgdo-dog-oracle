@@ -2,6 +2,7 @@
 namespace GDO\DogOracle;
 
 use GDO\Core\GDO_DBException;
+use GDO\Core\Logger;
 use GDO\Dog\Dog;
 use GDO\Dog\DOG_Server;
 use GDO\Dog\DOG_User;
@@ -96,8 +97,15 @@ final class Announcer
         $subscriptions = $user->settingValue('Poll', 'poll_subscription');
         foreach ($subscriptions as $moduleName)
         {
-            echo "$moduleName\n";
-            call_user_func([$this, "announcePollToUserVia{$moduleName}"], $user, $poll);
+            $methodName = "announcePollToUserVia{$moduleName}";
+            if (method_exists($this, $methodName))
+            {
+                call_user_func([$this, $methodName], $user, $poll);
+            }
+            else
+            {
+                Logger::logError("Unknown announce subscriptor: $methodName");
+            }
         }
     }
 
@@ -134,6 +142,19 @@ final class Announcer
         {
             $u->send($this->renderChatMessage($poll, $server->getConnector()->getTrigger(), $user->getLangISO()));
         }
+    }
+
+    public function announcePollToUserViaDogIRC(GDO_User $user, GDO_Poll $poll): void
+    {
+//        if ($u = DOG_User::getFor($user))
+//        {
+//
+//        }
+//        if ($user DOG_User::getFor($user)
+//        {
+//
+//        }
+
     }
 
 }
