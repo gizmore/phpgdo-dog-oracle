@@ -36,7 +36,7 @@ final class NewPoll extends MethodForm
 
     public function getCLITrigger(): string
     {
-        return 'poll.new';
+        return 'newpoll';
     }
 
     protected function createForm(GDT_Form $form): void
