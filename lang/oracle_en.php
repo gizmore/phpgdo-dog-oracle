@@ -24,4 +24,12 @@ return [
     Kind Regards
     The %2$s system',
 
+    # Answer
+    'err_dog_oracle_answer_count' => 'You may answer %s different choices.',
+    'err_dog_oracle_answer_num' => 'You can only choose values between %s and %s.',
+    'msg_dog_voted' => 'Your vote has been recorded.',
+
+    # Newpoll
+    'msg_dog_poll_created' => 'Your poll has been created and broadcasted.',
+    'msg_dog_poll_preview' => 'Your poll would be: %s - Answers: %s (NumChoices: %s). Use the --save switch to create it.',
 ];

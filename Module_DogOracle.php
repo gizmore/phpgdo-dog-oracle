@@ -50,12 +50,10 @@ final class Module_DogOracle extends GDO_Module
         $this->loadLanguage('lang/oracle');
     }
 
-    public function hookPollAdded(string $pollid): void
+    public function clihookPollAdded(string $pollid): void
     {
-        if (Application::instance()->isCLI())
-        {
-            $poll = GDO_Poll::getById($pollid);
-            (new Announcer($poll))->doIt();
-        }
+         $poll = GDO_Poll::getById($pollid);
+         (new Announcer($poll))->doIt();
     }
+
 }
