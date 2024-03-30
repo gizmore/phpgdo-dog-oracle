@@ -3,6 +3,7 @@ namespace GDO\DogOracle;
 
 use GDO\Core\GDO_DBException;
 use GDO\Core\Logger;
+use GDO\Dog\BasicAnnouncer;
 use GDO\Dog\Dog;
 use GDO\Dog\DOG_Server;
 use GDO\Dog\DOG_User;
@@ -13,7 +14,7 @@ use GDO\Poll\GDO_Poll;
 use GDO\UI\GDT_Link;
 use GDO\User\GDO_User;
 
-final class Announcer
+final class Announcer extends BasicAnnouncer
 {
 
     private GDO_Poll $poll;
